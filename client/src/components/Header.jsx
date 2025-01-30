@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 
 const Header = () => {
+  const { removeBg } = useContext(AppContext);
+  // ==============================
   return (
     <div className="flex items-center justify-between max-md:flex-col-reverse gap-y-12 px-4 mt-10 lg:px-44 sm:mt-28 ">
       {/* left -------- */}
@@ -14,7 +17,13 @@ const Header = () => {
         </div>
         {/* upload button ---------------------------- */}
         <div className=" mt-20 flex">
-          <input type="file" name="" id="upload1" hidden />
+          <input
+            onChange={(e) => removeBg(e.target.files[0])}
+            type="file"
+            accept="image/*"
+            id="upload1"
+            hidden
+          />
           <label
             className="inline-flex gap-3 px-8 py-3.5 rounded-md cursor-pointer bg-sky-700 m-auto hover:scale-105 transition-all shadow-[0px_0px_2px_1px_#4fd1c5] hover:shadow-[0px_10px_25px_2px_#0f766e]"
             htmlFor="upload1"
